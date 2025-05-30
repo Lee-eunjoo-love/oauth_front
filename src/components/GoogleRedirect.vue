@@ -8,7 +8,6 @@
 
 <script>
 import axios from 'axios';
-import { encryptData } from '@/plugins/crypto';
 
 export default {
     name: "GoogleRedirect",
@@ -22,9 +21,9 @@ export default {
             // 서버로 로그인 요청 (code 값으로 SNS 인증 처리후 accessToken 반환)
             const response = await axios.post("http://localhost:8080/member/google/doLogin", { code });
             const token = response.data.token;
-            console.log('sendCodeToServer', encryptData(token));
-            localStorage.setItem("token", encryptData(token));
-            //window.location.href = "/";
+            console.log('sendCodeToServer', token);
+            localStorage.setItem("token", token);
+            window.location.href = "/";
         }
     }
 }

@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { encryptData } from '@/plugins/crypto';
 import axios from 'axios';
 
 export default {
@@ -23,7 +22,7 @@ export default {
             // 서버로 로그인 요청 (code 값으로 SNS 인증 처리후 accessToken 반환)
             const response = await axios.post("http://localhost:8080/member/kakao/doLogin", { code });
             const token = response.data.token;
-            localStorage.setItem("token", encryptData(token));
+            localStorage.setItem("token", token);
             window.location.href = "/";
         }
     }

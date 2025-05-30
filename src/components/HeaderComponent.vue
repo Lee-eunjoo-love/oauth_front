@@ -14,7 +14,6 @@
 
 <script>
 import { useCookies } from 'vue3-cookies';
-import { encryptData } from '@/plugins/crypto';
 export default {
     name: "HeaderComponent",
     data() {
@@ -31,7 +30,7 @@ export default {
         const token = this.cookies.get("token");
         if (token) {
             console.log('token', token);
-            localStorage.setItem("token", encryptData(token));
+            localStorage.setItem("token", token);
             this.cookies.remove("token");
             window.location.href = "/";
         }
