@@ -45,7 +45,7 @@
                             <img src="@/assets/kakaoLoginButton.png" @click="kakaoLogin()" />
                         </v-col>
                     </v-row>
-                    <v-row>
+                    <v-row v-show="isServerGoogleLogin">
                         <v-col cols="6">
                             <v-btn @click="googleServerLogin()">Google Server Login</v-btn>
                         </v-col>
@@ -75,6 +75,7 @@ export default {
             // REST API Key
             kakaoClientId: "2582ec206c36727bd33600c0d2b1ebac",
             kakaoRedirectUrl: "http://localhost:3000/oauth/kakao/redirect",
+            isServerGoogleLogin: false,
         }
     },
     methods: {
